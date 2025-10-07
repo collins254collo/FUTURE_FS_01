@@ -1,103 +1,226 @@
-import Image from "next/image";
+'use client';
+import { useState, useEffect, useRef } from 'react';
+import { Terminal, Code, Zap } from 'lucide-react';
 
-export default function Home() {
+export default function TerminalIntro() {
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentLine, setCurrentLine] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+  const [animationComplete, setAnimationComplete] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [commandHistory, setCommandHistory] = useState([]);
+  const inputRef = useRef(null);
+  
+ const lines = [
+  "> booting up system...",
+  "> loading env variables...",
+  "> connecting to creativity@colman.tech...",
+  "> const developer = {",
+  '>   name: "Collins Njogu",',
+  '>   title: "Full-Stack Developer",',
+  '>   focus: "Clean code & intuitive design",',
+  "> };",
+  '> console.log("Portfolio initialized successfully ");'
+];
+
+
+  const commands = {
+    help: 'Available commands: home, about, skills, projects, contact, clear, help',
+  };
+
+  useEffect(() => {
+    if (currentLine < lines.length) {
+      const currentText = lines[currentLine];
+      let charIndex = 0;
+      
+      const typingInterval = setInterval(() => {
+        if (charIndex <= currentText.length) {
+          setDisplayedText(currentText.slice(0, charIndex));
+          charIndex++;
+        } else {
+          clearInterval(typingInterval);
+          setTimeout(() => {
+            setCurrentLine(prev => prev + 1);
+            setDisplayedText('');
+          }, 500);
+        }
+      }, 100);
+
+      return () => clearInterval(typingInterval);
+    } else {
+      setAnimationComplete(true);
+    }
+  }, [currentLine]);
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  useEffect(() => {
+    if (animationComplete && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [animationComplete]);
+
+  const handleCommand = (e) => {
+    e.preventDefault();
+    const command = inputValue.trim().toLowerCase();
+    
+    if (command === '') return;
+
+    if (command === 'clear') {
+      setCommandHistory([]);
+      setInputValue('');
+      return;
+    }
+
+    const response = commands[command] || `Command not found: ${command}. Type 'help' for available commands.`;
+    
+    setCommandHistory(prev => [
+      ...prev,
+      { type: 'input', text: command },
+      { type: 'output', text: response }
+    ]);
+    
+    setInputValue('');
+
+    // Here you would add your actual navigation logic
+   
+
+   if (command === 'home') {
+      window.location.href = '/';
+    } else if (command === 'about') {
+      window.location.href = '/about';
+    } else if (command === 'skills') {
+      window.location.href = '/skills';
+    } else if (command === 'projects') {
+      window.location.href = '/#projects';
+    } else if (command === 'contact') {
+      window.location.href = '/contact';
+    }
+  };
+
+  const handleTerminalClick = () => {
+    if (animationComplete && inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="h-screen w-screen bg-black flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="w-full h-full max-w-5xl max-h-screen flex items-center justify-center">
+        {/* Terminal Window */}
+        <div className="bg-gray-900 rounded-lg shadow-2xl border border-gray-800 overflow-hidden h-[85vh] sm:h-[80vh] flex flex-col w-full">
+          {/* Terminal Header */}
+          <div className="bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 flex items-center justify-between border-b border-gray-700 flex-shrink-0">
+            <div className="flex items-center gap-2">
+              <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" />
+              <span className="text-gray-400 text-xs sm:text-sm font-mono truncate">
+                portfolio.dev
+              </span>
+            </div>
+            <div className="flex gap-1.5 sm:gap-2">
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+            </div>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Terminal Content */}
+          <div 
+            className="p-4 sm:p-6 md:p-8 font-mono text-xs sm:text-sm md:text-base overflow-y-auto flex-1 cursor-text"
+            onClick={handleTerminalClick}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="w-full">
+              {/* Initial Animation */}
+              {lines.slice(0, currentLine).map((line, index) => (
+                <div key={index} className="mb-1.5 sm:mb-2">
+                  <span className="text-green-400 break-all">{line}</span>
+                </div>
+              ))}
+              {currentLine < lines.length && (
+                <div className="mb-1.5 sm:mb-2">
+                  <span className="text-green-400 break-all">{displayedText}</span>
+                  <span className={`inline-block w-1.5 h-3 sm:w-2 sm:h-4 md:h-5 bg-green-400 ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
+                </div>
+              )}
+              
+              {/* Interactive Section */}
+              {animationComplete && (
+                <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
+                  {/* Profile Image */}
+                  <div className="flex justify-center mb-6">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-green-400 rounded-full blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                      <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-2 border-green-400 overflow-hidden bg-gray-800">
+                        <img 
+                          src="/portfolio.jpg" 
+                          alt="Profile" 
+                          className="w-full h-full object-cover"
+                        />
+                       
+                      </div>
+                      <div className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-green-400 rounded-full border-4 border-gray-900 animate-pulse"></div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 sm:gap-3 text-gray-300 text-xs sm:text-sm md:text-base">
+                    <Code className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-green-400" />
+                    <span className="break-words">Ready to explore! Type 'help' to see available commands</span>
+                  </div>
+                  <div className="flex items-center gap-2 sm:gap-3 text-gray-300 text-xs sm:text-sm md:text-base">
+                    <Zap className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-green-400" />
+                    <span className="break-words">Try: about | skills | projects | contact</span>
+                  </div>
+
+                  {/* Command History */}
+                  <div className="mt-6 space-y-2">
+                    {commandHistory.map((entry, index) => (
+                      <div key={index} className="text-gray-300">
+                        {entry.type === 'input' ? (
+                          <div className="flex items-center gap-2">
+                            <span className="text-green-400">$</span>
+                            <span className="text-white">{entry.text}</span>
+                          </div>
+                        ) : (
+                          <div className="text-gray-400 ml-4">{entry.text}</div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Command Input */}
+                  <form onSubmit={handleCommand} className="flex items-center gap-2 mt-4">
+                    <span className="text-green-400 flex-shrink-0">$</span>
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      className="flex-1 bg-transparent text-white outline-none font-mono caret-green-400"
+                      spellCheck="false"
+                      autoComplete="off"
+                      placeholder="type a command..."
+                    />
+                    <span className={`w-1.5 h-3 sm:w-2 sm:h-4 md:h-5 bg-green-400 ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
+                  </form>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Additional Info */}
+        <div className="absolute bottom-4 left-0 right-0 text-center px-2">
+          <p className="text-gray-500 text-xs sm:text-sm font-mono break-words">
+            <span className="hidden sm:inline">{'<'} Click terminal and type commands to navigate {'>'}</span>
+            <span className="sm:hidden">{'<'} Tap & type to navigate {'>'}</span>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
