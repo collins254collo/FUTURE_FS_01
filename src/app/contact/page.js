@@ -17,7 +17,7 @@ export default function ContactSection() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'your.njogucollins10397@gmail.com',
+      value: 'njogucollins10397@gmail.com',
       link: 'mailto:njogucollins10397@gmail.com'
     },
     {
@@ -38,21 +38,21 @@ export default function ContactSection() {
     {
       icon: Github,
       name: 'GitHub',
-      username: '@yourusername',
-      link: 'https://github.com/yourusername',
+      username: '@collins254collo',
+      link: 'https://github.com/collins254collo',
       color: 'hover:text-gray-300'
     },
     {
       icon: Linkedin,
       name: 'LinkedIn',
-      username: '@yourusername',
-      link: 'https://linkedin.com/in/yourusername',
+      username: '@collins-njogu',
+      link: 'https://www.linkedin.com/in/collins-njogu-4aa75a351',
       color: 'hover:text-blue-400'
     },
     {
       icon: Twitter,
       name: 'Twitter',
-      username: '@yourusername',
+      username: '@collo_tech',
       link: 'https://twitter.com/yourusername',
       color: 'hover:text-sky-400'
     }

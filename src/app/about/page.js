@@ -86,7 +86,7 @@ export default function AboutSection() {
                       <Briefcase className="w-4 h-4 text-green-400 flex-shrink-0" />
                       <div>
                         <div className="text-gray-500 font-mono">Experience</div>
-                        <div className="text-gray-300">3+ Years</div>
+                        <div className="text-gray-300">1+ Years</div>
                       </div>
                     </div>
                   </div>
@@ -102,18 +102,7 @@ export default function AboutSection() {
                   </div>
                 </div>
 
-                {/* Social Links */}
-                <div className="flex gap-3 justify-center lg:justify-start">
-                  <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded flex items-center justify-center transition-colors">
-                    <Github className="w-5 h-5 text-green-400" />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded flex items-center justify-center transition-colors">
-                    <Linkedin className="w-5 h-5 text-green-400" />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded flex items-center justify-center transition-colors">
-                    <Twitter className="w-5 h-5 text-green-400" />
-                  </a>
-                </div>
+               
               </div>
 
               {/* Right Column - About Content */}
@@ -183,24 +172,21 @@ export default function AboutSection() {
                     </div>
                   </div>
 
-                  <div className="bg-gray-800 p-5 rounded border border-gray-700 hover:border-green-400 transition-colors">
-                    <div className="flex items-start gap-3 mb-3">
-                      <GraduationCap className="w-5 h-5 text-green-400 flex-shrink-0 mt-1" />
-                      <div>
-                        <h3 className="text-green-400 font-semibold mb-2 text-sm sm:text-base">Mentoring</h3>
-                        <p className="text-gray-400 text-xs sm:text-sm">
-                          Helping aspiring developers learn and grow through mentorship and code reviews.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
 
                 {/* CTA Button */}
                 <div className="pt-4">
-                  <button className="px-6 py-3 bg-green-500 hover:bg-green-600 active:bg-green-700 text-black font-semibold rounded transition-colors duration-200 text-sm sm:text-base">
-                    Download Resume
-                  </button>
+                <a
+                    href="/final_resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    className="inline-block"
+                  >
+                    <button className="px-6 py-3 bg-green-500 hover:bg-green-600 active:bg-green-700 text-black font-semibold rounded transition-colors duration-200 text-sm sm:text-base cursor-pointer"> Download Resume </button>
+                  </a>
+
                 </div>
               </div>
             </div>

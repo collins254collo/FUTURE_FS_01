@@ -21,7 +21,6 @@ export default function SkillsSection() {
         { name: 'Tailwind CSS', category: 'styling' },
         { name: 'HTML5', category: 'markup' },
         { name: 'CSS3', category: 'styling' },
-        { name: 'Redux', category: 'state' }
       ]
     },
     backend: {
@@ -31,8 +30,6 @@ export default function SkillsSection() {
       items: [
         { name: 'Node.js', category: 'runtime' },
         { name: 'Express.js', category: 'framework' },
-        { name: 'Python', category: 'language' },
-        { name: 'Django', category: 'framework' },
         { name: 'REST APIs', category: 'api' },
         { name: 'GraphQL', category: 'api' },
         { name: 'JWT', category: 'auth' },
@@ -47,8 +44,7 @@ export default function SkillsSection() {
         { name: 'MongoDB', category: 'nosql' },
         { name: 'PostgreSQL', category: 'sql' },
         { name: 'MySQL', category: 'sql' },
-        { name: 'Redis', category: 'cache' },
-        { name: 'Firebase', category: 'baas' },
+        { name: 'Superbase', category: 'baas' },
         { name: 'Prisma', category: 'orm' }
       ]
     },
@@ -59,11 +55,7 @@ export default function SkillsSection() {
       items: [
         { name: 'Git', category: 'vcs' },
         { name: 'GitHub', category: 'platform' },
-        { name: 'Docker', category: 'container' },
-        { name: 'VS Code', category: 'editor' },
-        { name: 'Figma', category: 'design' },
-        { name: 'Linux', category: 'os' },
-        { name: 'AWS', category: 'cloud' },
+        { name: 'Railways', category: 'deployment' },
         { name: 'Vercel', category: 'deployment' }
       ]
     }
@@ -135,7 +127,7 @@ export default function SkillsSection() {
                     className={`flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg border font-mono text-xs sm:text-sm transition-all duration-300 ${
                       activeCategory === category
                         ? 'bg-gray-800 border-green-400 text-green-400 shadow-lg shadow-green-400/20'
-                        : 'bg-gray-900 border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300'
+                        : 'bg-gray-900 border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300 cursor-pointer hover:shadow-md hover:shadow-gray-700/20'
                     }`}
                   >
                     <CategoryIcon className="w-4 h-4" />
