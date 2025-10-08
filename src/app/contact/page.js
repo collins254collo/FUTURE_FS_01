@@ -288,7 +288,7 @@ export default function ContactSection() {
                       className={`w-full sm:w-auto px-8 py-3 rounded font-mono font-semibold text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2 ${
                         isSubmitting
                           ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
-                          : 'bg-green-500 text-black hover:bg-green-600 active:bg-green-700 hover:shadow-lg hover:shadow-green-400/50'
+                          : 'bg-green-500 text-black hover:bg-green-600 active:bg-green-700 hover:shadow-lg hover:shadow-green-400/50 cursor-pointer'
                       }`}
                     >
                       {isSubmitting ? (
