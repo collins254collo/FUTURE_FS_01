@@ -44,7 +44,7 @@ export default function TerminalIntro() {
             setDisplayedText('');
           }, 500);
         }
-      }, 100);
+      }, 50);
 
       return () => clearInterval(typingInterval);
     } else {
@@ -97,7 +97,7 @@ export default function TerminalIntro() {
     } else if (command === 'skills') {
       window.location.href = '/skills';
     } else if (command === 'projects') {
-      window.location.href = '/#projects';
+      window.location.href = '/projects';
     } else if (command === 'contact') {
       window.location.href = '/contact';
     }

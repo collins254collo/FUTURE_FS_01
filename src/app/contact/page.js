@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Terminal, Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageSquare, User, FileText } from 'lucide-react';
+import TerminalCommandInput from '../terminalCommand';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -307,6 +308,11 @@ export default function ContactSection() {
               </div>
             </div>
           </div>
+          {/* Terminal Command Input */}
+        <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
+          <TerminalCommandInput />
+        </div>
+        
         </div>
 
         <div className="mt-4 sm:mt-6 text-center">

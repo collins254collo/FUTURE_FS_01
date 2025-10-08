@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { Terminal, Code2, Database, Layout, Server, GitBranch, Boxes, Wrench } from 'lucide-react';
+import TerminalCommandInput from '../terminalCommand';
 
 export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState('frontend');
@@ -206,6 +207,10 @@ export default function SkillsSection() {
                 </div>
               </div>
             </div>
+          </div>
+          {/* Terminal Command Input */}
+        <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
+          <TerminalCommandInput />
           </div>
         </div>
 

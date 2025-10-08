@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Terminal, User, Code2, Briefcase, GraduationCap, MapPin, Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import TerminalCommandInput from '../terminalCommand';
 
 export default function AboutSection() {
   const [typedText, setTypedText] = useState('');
@@ -204,7 +205,13 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
+            {/* Terminal Command Input */}
+        <div className="mt-6 sm:mt-8">
+          <TerminalCommandInput />
         </div>
+        
+        </div>
+      
 
         {/* Command Hint */}
         <div className="mt-4 sm:mt-6 text-center">
