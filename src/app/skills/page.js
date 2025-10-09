@@ -192,7 +192,7 @@ export default function SkillsSection() {
                 </div>
                 <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-center col-span-2 sm:col-span-1">
                   <div className="text-2xl sm:text-3xl font-bold text-green-400 font-mono mb-1">
-                    3+
+                    1+
                   </div>
                   <div className="text-gray-400 text-xs sm:text-sm font-mono">
                     Years Exp
