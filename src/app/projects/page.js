@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { Terminal, ExternalLink, Github, Folder, Code2, Loader2, AlertCircle } from 'lucide-react';
+import TerminalCommandInput from '../terminalCommand';
 
 export default function TerminalProjects() {
   const [displayedLines, setDisplayedLines] = useState([]);
@@ -346,6 +347,7 @@ export default function TerminalProjects() {
                   />
                   <span className={`w-1.5 h-3 sm:w-2 sm:h-4 bg-green-400 ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
                 </form>
+
 
                 {/* Footer Info */}
                 <div className="mt-4 text-gray-500 text-xs">

@@ -7,6 +7,7 @@ export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState('frontend');
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  
 
   const skills = {
     frontend: {
@@ -202,7 +203,7 @@ export default function SkillsSection() {
           </div>
           {/* Terminal Command Input */}
         <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
-          <TerminalCommandInput />
+          <TerminalCommandInput currentPage='skills' />
           </div>
         </div>
 

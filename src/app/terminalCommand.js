@@ -1,11 +1,13 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function TerminalCommandInput({ currentPage = 'home' }) {
   const [inputValue, setInputValue] = useState('');
   const [commandHistory, setCommandHistory] = useState([]);
   const [showCursor, setShowCursor] = useState(true);
   const inputRef = useRef(null);
+  const router = useRouter();
 
   const commands = {
     help: 'Available commands: home, about, skills, projects, contact, clear, help',
@@ -42,18 +44,40 @@ export default function TerminalCommandInput({ currentPage = 'home' }) {
       return;
     }
 
-    // Check if user is already on the page
-    if (command === currentPage) {
-      const response = `You are already on the ${command} page`;
-      setCommandHistory(prev => [
-        ...prev,
-        { type: 'input', text: command },
-        { type: 'output', text: response }
-      ]);
+    // Navigation commands - navigate immediately without adding to history
+    const navigationCommands = ['home', 'about', 'skills', 'projects', 'contact'];
+    
+    if (navigationCommands.includes(command)) {
+      // Check if user is already on the page
+      if (command === currentPage) {
+        const response = `You are already on the ${command} page`;
+        setCommandHistory(prev => [
+          ...prev,
+          { type: 'input', text: command },
+          { type: 'output', text: response }
+        ]);
+        setInputValue('');
+        return;
+      }
+
+      // Navigate immediately
       setInputValue('');
+      
+      if (command === 'home') {
+        router.push('/');
+      } else if (command === 'about') {
+        router.push('/about');
+      } else if (command === 'skills') {
+        router.push('/skills');
+      } else if (command === 'projects') {
+        router.push('/projects');
+      } else if (command === 'contact') {
+        router.push('/contact');
+      }
       return;
     }
 
+    // For non-navigation commands, show response
     const response = commands[command] || `Command not found: ${command}. Type 'help' for available commands.`;
     
     setCommandHistory(prev => [
@@ -63,21 +87,6 @@ export default function TerminalCommandInput({ currentPage = 'home' }) {
     ]);
     
     setInputValue('');
-
-    // Navigation logic
-    setTimeout(() => {
-      if (command === 'home') {
-        window.location.href = '/';
-      } else if (command === 'about') {
-        window.location.href = '/about';
-      } else if (command === 'skills') {
-        window.location.href = '/skills';
-      } else if (command === 'projects') {
-        window.location.href = '/projects';
-      } else if (command === 'contact') {
-        window.location.href = '/contact';
-      }
-    }, 300);
   };
 
   const handleKeyPress = (e) => {

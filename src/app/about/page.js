@@ -9,6 +9,8 @@ export default function AboutSection() {
   
   const introText = "Full Stack Developer | Problem Solver | Tech Enthusiast";
 
+  
+
   useEffect(() => {
     if (isTyping && typedText.length < introText.length) {
       const timeout = setTimeout(() => {
@@ -178,7 +180,7 @@ export default function AboutSection() {
                 {/* CTA Button */}
                 <div className="pt-4">
                 <a
-                    href="/final_resume.pdf"
+                    href="/collins_resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     download
@@ -192,9 +194,9 @@ export default function AboutSection() {
             </div>
           </div>
             {/* Terminal Command Input */}
-        <div className="mt-6 sm:mt-8">
-          <TerminalCommandInput />
-        </div>
+                <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
+                  <TerminalCommandInput currentPage='about'/>
+                </div>
         
         </div>
       

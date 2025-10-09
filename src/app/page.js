@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { Terminal, Code, Zap } from 'lucide-react';
+import TerminalCommandInput from './terminalCommand';
 
 export default function TerminalIntro() {
   const [displayedText, setDisplayedText] = useState('');
@@ -87,20 +88,7 @@ export default function TerminalIntro() {
     
     setInputValue('');
 
-    // Here you would add your actual navigation logic
-   
-
-   if (command === 'home') {
-      window.location.href = '/';
-    } else if (command === 'about') {
-      window.location.href = '/about';
-    } else if (command === 'skills') {
-      window.location.href = '/skills';
-    } else if (command === 'projects') {
-      window.location.href = '/projects';
-    } else if (command === 'contact') {
-      window.location.href = '/contact';
-    }
+  
   };
 
   const handleTerminalClick = () => {
@@ -167,14 +155,7 @@ export default function TerminalIntro() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 sm:gap-3 text-gray-300 text-xs sm:text-sm md:text-base">
-                    <Code className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-green-400" />
-                    <span className="break-words">Ready to explore! Type 'help' to see available commands</span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-gray-300 text-xs sm:text-sm md:text-base">
-                    <Zap className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-green-400" />
-                    <span className="break-words">Try: about | skills | projects | contact</span>
-                  </div>
+               
 
                   {/* Command History */}
                   <div className="mt-6 space-y-2">
@@ -192,25 +173,15 @@ export default function TerminalIntro() {
                     ))}
                   </div>
 
-                  {/* Command Input */}
-                  <form onSubmit={handleCommand} className="flex items-center gap-2 mt-4">
-                    <span className="text-green-400 flex-shrink-0">$</span>
-                    <input
-                      ref={inputRef}
-                      type="text"
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
-                      className="flex-1 bg-transparent text-white outline-none font-mono caret-green-400"
-                      spellCheck="false"
-                      autoComplete="off"
-                      placeholder="type a command..."
-                    />
-                    <span className={`w-1.5 h-3 sm:w-2 sm:h-4 md:h-5 bg-green-400 ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
-                  </form>
+                 {/* Terminal Command Input */}
+                        <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
+                          <TerminalCommandInput />
+                          </div>
                 </div>
               )}
             </div>
           </div>
+         
         </div>
 
         {/* Additional Info */}

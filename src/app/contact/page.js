@@ -13,6 +13,8 @@ export default function ContactSection() {
   const [commandOutput, setCommandOutput] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  
+
   const contactInfo = [
     {
       icon: Mail,
@@ -65,16 +67,33 @@ export default function ContactSection() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setCommandOutput([
-      '> Initializing contact protocol...',
-      '> Validating input data...',
-      '> Encrypting message...',
-      '> Establishing connection...'
-    ]);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
+  // Initialize animation messages
+  setCommandOutput([
+    '> Initializing contact protocol...',
+    '> Validating input data...',
+    '> Encrypting message...',
+    '> Establishing connection...'
+  ]);
+
+  try {
+    // Send data to backend
+    const res = await fetch('http://localhost:8080/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to send message.');
+    }
+
+    // Simulate "terminal" feedback after success
     setTimeout(() => {
       setCommandOutput(prev => [
         ...prev,
@@ -83,13 +102,23 @@ export default function ContactSection() {
         '> Connection closed.'
       ]);
       setIsSubmitting(false);
-      
+
+      // Reset form after 3 seconds
       setTimeout(() => {
         setFormData({ name: '', email: '', subject: '', message: '' });
         setCommandOutput([]);
       }, 3000);
     }, 2000);
-  };
+  } catch (error) {
+    console.error(error);
+    setCommandOutput(prev => [
+      ...prev,
+      '>  Transmission failed. Please try again later.'
+    ]);
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-black text-green-400 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
@@ -242,7 +271,7 @@ export default function ContactSection() {
                       />
                     </div>
 
-                    <div>
+                    {/* <div>
                       <label className="flex items-center gap-2 text-gray-400 text-sm font-mono mb-2">
                         <FileText className="w-4 h-4 text-green-400" />
                         Subject
@@ -255,7 +284,7 @@ export default function ContactSection() {
                         className="w-full bg-gray-900 border border-gray-700 rounded px-4 py-3 text-gray-300 font-mono text-sm focus:outline-none focus:border-green-400 transition-colors"
                         placeholder="Project Collaboration"
                       />
-                    </div>
+                    </div> */}
 
                     <div>
                       <label className="flex items-center gap-2 text-gray-400 text-sm font-mono mb-2">
@@ -310,7 +339,7 @@ export default function ContactSection() {
           </div>
           {/* Terminal Command Input */}
         <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
-          <TerminalCommandInput />
+          <TerminalCommandInput currentPage='contact'/>
         </div>
         
         </div>
