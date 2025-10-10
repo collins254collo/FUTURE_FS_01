@@ -90,7 +90,7 @@ export default function ContactSection() {
     });
 
     if (!res.ok) {
-      throw new Error('Failed to send message.');
+      throw new Error('Failed to send message.',);
     }
 
     // Simulate "terminal" feedback after success

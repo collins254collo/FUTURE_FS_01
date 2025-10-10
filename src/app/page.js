@@ -151,7 +151,7 @@ export default function TerminalIntro() {
                         />
                        
                       </div>
-                      <div className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-green-400 rounded-full border-4 border-gray-900 animate-pulse"></div>
+                      
                     </div>
                   </div>
 
