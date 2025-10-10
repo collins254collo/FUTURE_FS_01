@@ -30,3 +30,13 @@ By combining a **terminal-style UI** with smooth animations and real-time data f
 **Deployment:** Vercel(Frontend), Render(Backend) 
 
 ---
+## 🌐 Live Demo
+
+🔗 **Portfolio:**  
+💻 **GitHub Repo:** https://collins-wamiatu.vercel.app/
+
+## 🙌 Acknowledgements
+
+Grateful to the **Future Interns** team for the mentorship and guidance that helped bring this project to life.
+
+
