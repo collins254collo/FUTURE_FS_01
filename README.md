@@ -27,13 +27,6 @@ By combining a **terminal-style UI** with smooth animations and real-time data f
 **Frontend:** React, Tailwind CSS, Framer Motion  
 **Backend:** Node.js  
 **Database & Auth:** Supabase  
-**Deployment:** Vercel  
+**Deployment:** Vercel(Frontend), Render(Backend) 
 
 ---
-
-## 🧩 Setup & Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/collins254collo/portfolio.git
-   cd portfolio
