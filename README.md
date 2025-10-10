@@ -25,7 +25,7 @@ By combining a **terminal-style UI** with smooth animations and real-time data f
 ## 🛠️ Tech Stack
 
 **Frontend:** React, Tailwind CSS, Framer Motion  
-**Backend:** Node.js  
+**Backend:** Node.js,Express js  
 **Database & Auth:** Supabase  
 **Deployment:** Vercel(Frontend), Render(Backend) 
 
