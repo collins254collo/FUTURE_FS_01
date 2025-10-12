@@ -1,4 +1,4 @@
 User-agent: *
    Allow: /
    
-   Sitemap: https://colman.tech/sitemap.xml
+   Sitemap: https://collins-wamiatu.vercel.app/sitemap.xml
