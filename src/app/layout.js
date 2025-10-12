@@ -1,5 +1,6 @@
 import "./globals.css";
 
+
 // Metadata for SEO
 export const metadata = {
   metadataBase: new URL("https://collins-wamiatu.vercel.app"),
@@ -86,6 +87,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         {/* JSON-LD Structured Data */}
+        <meta name="google-site-verification" content="dJyUx5O0JEWPUz3qOxMPfdeUqMKfRc-BqH-XH-SxdLs" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
