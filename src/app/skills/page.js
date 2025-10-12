@@ -1,18 +1,17 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { Terminal, Code2, Database, Layout, Server, GitBranch, Boxes, Wrench } from 'lucide-react';
+import { Terminal, Layout, Server, Database, Wrench } from 'lucide-react';
 import TerminalCommandInput from '../terminalCommand';
 
 export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState('frontend');
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  
 
   const skills = {
     frontend: {
       icon: Layout,
-      name: 'Frontend',
+      name: 'Frontend Development',
       color: 'text-blue-400',
       items: [
         { name: 'React.js', category: 'framework' },
@@ -26,7 +25,7 @@ export default function SkillsSection() {
     },
     backend: {
       icon: Server,
-      name: 'Backend',
+      name: 'Backend Development',
       color: 'text-purple-400',
       items: [
         { name: 'Node.js', category: 'runtime' },
@@ -39,24 +38,24 @@ export default function SkillsSection() {
     },
     database: {
       icon: Database,
-      name: 'Database',
+      name: 'Database & ORM',
       color: 'text-orange-400',
       items: [
         { name: 'MongoDB', category: 'nosql' },
         { name: 'PostgreSQL', category: 'sql' },
         { name: 'MySQL', category: 'sql' },
-        { name: 'Superbase', category: 'baas' },
+        { name: 'Supabase', category: 'baas' },
         { name: 'Prisma', category: 'orm' }
       ]
     },
     tools: {
       icon: Wrench,
-      name: 'Tools & Others',
+      name: 'Tools & Deployment',
       color: 'text-green-400',
       items: [
         { name: 'Git', category: 'vcs' },
         { name: 'GitHub', category: 'platform' },
-        { name: 'Railways', category: 'deployment' },
+        { name: 'Render', category: 'deployment' },
         { name: 'Vercel', category: 'deployment' }
       ]
     }
@@ -87,132 +86,178 @@ export default function SkillsSection() {
   const currentSkills = skills[activeCategory];
   const Icon = currentSkills.icon;
 
+  // Calculate total skills
+  const totalSkills = Object.values(skills).reduce((sum, cat) => sum + cat.items.length, 0);
+
   return (
-    <div ref={sectionRef} className="min-h-screen bg-black text-green-400 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Terminal Window */}
-        <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
-          {/* Terminal Header */}
-          <div className="bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 flex items-center justify-between border-b border-gray-700">
-            <div className="flex items-center gap-2">
-              <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" />
-              <span className="text-gray-400 text-xs sm:text-sm font-mono">skills.json</span>
-            </div>
-            <div className="flex gap-1.5 sm:gap-2">
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
-            </div>
-          </div>
+    <>
+      {/* SEO Content - Hidden but crawlable */}
+      <div className="sr-only">
+        <h1>Technical Skills - Collins Njogu</h1>
+        <h2>Full Stack Developer Expertise and Technical Proficiencies</h2>
+        <p>
+          Collins Njogu is a full stack developer with 1+ years of professional experience, 
+          proficient in {totalSkills} modern web development technologies across frontend, 
+          backend, databases, and DevOps tools.
+        </p>
+        
+        {Object.entries(skills).map(([key, category]) => (
+          <section key={key}>
+            <h3>{category.name}</h3>
+            <p>
+              Expertise in {category.name.toLowerCase()} including: {category.items.map(skill => skill.name).join(', ')}
+            </p>
+            <ul>
+              {category.items.map((skill) => (
+                <li key={skill.name}>
+                  <strong>{skill.name}</strong> - {skill.category}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+        
+        <h3>Professional Summary</h3>
+        <p>
+          With over 1 year of professional experience, Collins has developed expertise across 
+          the full web development stack. Frontend skills include React.js, Next.js, TypeScript, 
+          and modern CSS frameworks like Tailwind CSS. Backend proficiency spans Node.js, 
+          Express.js, REST APIs, and GraphQL. Database experience includes both SQL (PostgreSQL, MySQL) 
+          and NoSQL (MongoDB) databases, along with modern ORMs like Prisma. DevOps and deployment 
+          skills include Git, GitHub, Vercel, and Railway for seamless application deployment.
+        </p>
+      </div>
 
-          {/* Content */}
-          <div className="p-6 sm:p-8 md:p-10">
-            {/* Command Prompt */}
-            <div className="mb-6 sm:mb-8">
-              <div className="text-gray-500 text-xs sm:text-sm mb-2 font-mono">
-                <span className="text-green-400">~/portfolio</span> $ tree skills/
+      {/* Visual Terminal Interface */}
+      <div ref={sectionRef} className="min-h-screen bg-black text-green-400 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+        <article className="max-w-7xl mx-auto">
+          <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
+            <header className="bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 flex items-center justify-between border-b border-gray-700">
+              <div className="flex items-center gap-2">
+                <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" aria-hidden="true" />
+                <span className="text-gray-400 text-xs sm:text-sm font-mono">skills.json - Collins Njogu</span>
               </div>
-              <div className="text-green-400 font-mono text-sm sm:text-base mb-4">
-                <span className="text-gray-500">├──</span> Exploring technical expertise...
+              <div className="flex gap-1.5 sm:gap-2" aria-hidden="true">
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
               </div>
-            </div>
+            </header>
 
-            {/* Category Tabs */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
-              {categories.map((category) => {
-                const CategoryIcon = skills[category].icon;
-                return (
-                  <button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg border font-mono text-xs sm:text-sm transition-all duration-300 ${
-                      activeCategory === category
-                        ? 'bg-gray-800 border-green-400 text-green-400 shadow-lg shadow-green-400/20'
-                        : 'bg-gray-900 border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300 cursor-pointer hover:shadow-md hover:shadow-gray-700/20'
-                    }`}
-                  >
-                    <CategoryIcon className="w-4 h-4" />
-                    <span className="hidden sm:inline">{skills[category].name}</span>
-                    <span className="sm:hidden capitalize">{category}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Skills Display */}
-            <div className="space-y-6">
-              {/* Category Header */}
-              <div className="flex items-center gap-3 mb-6">
-                <Icon className={`w-6 h-6 sm:w-7 sm:h-7 ${currentSkills.color}`} />
-                <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold font-mono ${currentSkills.color}`}>
-                  {currentSkills.name}
-                </h3>
-                <div className="flex-1 h-px bg-gray-800"></div>
+            <div className="p-6 sm:p-8 md:p-10">
+              <div className="mb-6 sm:mb-8">
+                <div className="text-gray-500 text-xs sm:text-sm mb-2 font-mono">
+                  <span className="text-green-400">~/portfolio</span> $ tree skills/
+                </div>
+                <div className="text-green-400 font-mono text-sm sm:text-base mb-4">
+                  <span className="text-gray-500">├──</span> Exploring technical expertise...
+                </div>
               </div>
 
-              {/* Skills Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-                {currentSkills.items.map((skill, index) => (
-                  <div
-                    key={skill.name}
-                    className="bg-gray-800 p-4 sm:p-5 rounded-lg border border-gray-700 hover:border-green-400 hover:shadow-lg hover:shadow-green-400/20 transition-all duration-300 group cursor-pointer"
-                    style={{
-                      animation: isVisible ? `fadeInUp 0.5s ease-out ${index * 0.05}s both` : 'none'
-                    }}
-                  >
-                    <div className="text-center">
-                      <h4 className="text-gray-200 font-mono text-sm sm:text-base font-semibold group-hover:text-green-400 transition-colors mb-2">
-                        {skill.name}
-                      </h4>
-                      <div className="inline-block px-2 py-1 bg-gray-900 rounded text-green-400 font-mono text-xs">
-                        {skill.category}
+              {/* Category Tabs */}
+              <nav className="flex flex-wrap gap-2 sm:gap-3 mb-8" role="tablist" aria-label="Skill categories ">
+                {categories.map((category) => {
+                  const CategoryIcon = skills[category].icon;
+                  return (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(category)}
+                      role="tab"
+                      aria-selected={activeCategory === category}
+                      aria-controls={`${category}-panel`}
+                      className={`flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg border font-mono text-xs sm:text-sm transition-all duration-300 cursor-pointer ${
+                        activeCategory === category
+                          ? 'bg-gray-800 border-green-400 text-green-400 shadow-lg shadow-green-400/20'
+                          : 'bg-gray-900 border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300 hover:shadow-md hover:shadow-gray-700/20'
+                      }`}
+                    >
+                      <CategoryIcon className="w-4 h-4" aria-hidden="true" />
+                      <span className="hidden sm:inline">{skills[category].name}</span>
+                      <span className="sm:hidden capitalize">{category}</span>
+                    </button>
+                  );
+                })}
+              </nav>
+
+              {/* Skills Display */}
+              <section
+                id={`${activeCategory}-panel`}
+                role="tabpanel"
+                aria-labelledby={activeCategory}
+                className="space-y-6"
+              >
+                {/* Category Header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <Icon className={`w-6 h-6 sm:w-7 sm:h-7 ${currentSkills.color}`} aria-hidden="true" />
+                  <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold font-mono ${currentSkills.color}`}>
+                    {currentSkills.name}
+                  </h2>
+                  <div className="flex-1 h-px bg-gray-800" aria-hidden="true"></div>
+                </div>
+
+                {/* Skills Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+                  {currentSkills.items.map((skill, index) => (
+                    <div
+                      key={skill.name}
+                      className="bg-gray-800 p-4 sm:p-5 rounded-lg border border-gray-700 hover:border-green-400 hover:shadow-lg hover:shadow-green-400/20 transition-all duration-300 group cursor-pointer"
+                      style={{
+                        animation: isVisible ? `fadeInUp 0.5s ease-out ${index * 0.05}s both` : 'none'
+                      }}
+                    >
+                      <div className="text-center">
+                        <h3 className="text-gray-200 font-mono text-sm sm:text-base font-semibold group-hover:text-green-400 transition-colors mb-2">
+                          {skill.name}
+                        </h3>
+                        <div className="inline-block px-2 py-1 bg-gray-900 rounded text-green-400 font-mono text-xs">
+                          {skill.category}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              {/* Stats Summary */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-gray-800">
-                <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-green-400 font-mono mb-1">
-                    {currentSkills.items.length}
+                {/* Stats Summary */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-gray-800">
+                  <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-center">
+                    <div className="text-2xl sm:text-3xl font-bold text-green-400 font-mono mb-1">
+                      {currentSkills.items.length}
+                    </div>
+                    <div className="text-gray-400 text-xs sm:text-sm font-mono">
+                      Technologies
+                    </div>
                   </div>
-                  <div className="text-gray-400 text-xs sm:text-sm font-mono">
-                    Technologies
+                  <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-center">
+                    <div className="text-2xl sm:text-3xl font-bold text-green-400 font-mono mb-1">
+                      {categories.length}
+                    </div>
+                    <div className="text-gray-400 text-xs sm:text-sm font-mono">
+                      Categories
+                    </div>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-center col-span-2 sm:col-span-1">
+                    <div className="text-2xl sm:text-3xl font-bold text-green-400 font-mono mb-1">
+                      1+
+                    </div>
+                    <div className="text-gray-400 text-xs sm:text-sm font-mono">
+                      Years Exp
+                    </div>
                   </div>
                 </div>
-                <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-green-400 font-mono mb-1">
-                    {categories.length}
-                  </div>
-                  <div className="text-gray-400 text-xs sm:text-sm font-mono">
-                    Categories
-                  </div>
-                </div>
-                <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-center col-span-2 sm:col-span-1">
-                  <div className="text-2xl sm:text-3xl font-bold text-green-400 font-mono mb-1">
-                    1+
-                  </div>
-                  <div className="text-gray-400 text-xs sm:text-sm font-mono">
-                    Years Exp
-                  </div>
-                </div>
-              </div>
+              </section>
+            </div>
+            
+            <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
+              <TerminalCommandInput currentPage='skills' />
             </div>
           </div>
-          {/* Terminal Command Input */}
-        <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
-          <TerminalCommandInput currentPage='skills' />
-          </div>
-        </div>
 
-        {/* Command Hint */}
-        <div className="mt-4 sm:mt-6 text-center">
-          <p className="text-gray-600 text-xs sm:text-sm font-mono">
-            <span className="text-green-400">~/portfolio</span> $ cd projects/
-          </p>
-        </div>
+          <footer className="mt-4 sm:mt-6 text-center">
+            <p className="text-gray-600 text-xs sm:text-sm font-mono">
+              <span className="text-green-400">~/portfolio</span> $ cd projects/
+            </p>
+          </footer>
+        </article>
       </div>
 
       <style jsx>{`
@@ -227,6 +272,6 @@ export default function SkillsSection() {
           }
         }
       `}</style>
-    </div>
+    </>
   );
 }
