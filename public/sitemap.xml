@@ -10,5 +10,20 @@
        <lastmod>2025-10-12</lastmod>
        <priority>0.8</priority>
      </url>
-     <!-- Add other pages -->
+      <url>
+       <loc>https://collins-wamiatu.vercel.app/skills</loc>
+       <lastmod>2025-10-12</lastmod>
+       <priority>0.8</priority>
+     </url>
+      <url>
+       <loc>https://collins-wamiatu.vercel.app/projects</loc>
+       <lastmod>2025-10-12</lastmod>
+       <priority>0.8</priority>
+      </url>
+      <url>
+       <loc>https://collins-wamiatu.vercel.app/contact</loc>
+       <lastmod>2025-10-12</lastmod>
+       <priority>0.8</priority>
+      </url>
+
    </urlset>
