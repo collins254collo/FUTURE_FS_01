@@ -67,15 +67,18 @@ export default function TerminalProjects() {
           live: "https://bobbyfurniturekenya.com",
           status: "deployed"
         },
-        {
-          id: 2,
-          name: "Task Management App",
-          description: "Collaborative project management tool with real-time updates and team collaboration features",
-          tech: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
-          github: "https://github.com/collins254collo/taskapp",
-          live: "https://taskapp-demo.com",
-          status: "deployed"
-        },
+      {
+        id: 2,
+        name: "Colman Tech Savvy Website",
+        description:
+          "Official website for Colman Tech Savvy, showcasing the agency’s web and mobile development services. Built with React.js, Next.js, and Node.js, it features a dynamic design and a contact management system that securely handles client inquiries and messages.",
+        tech: ["React.js", "Next.js", "Node.js"],
+        github: "https://github.com/collins254collo/taskapp",
+        live: "https://colman-client.vercel.app",
+        status: "Deployed"
+      }
+
+,
       ]);
     }
   };
