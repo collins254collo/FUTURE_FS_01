@@ -77,7 +77,7 @@ export default function ContactSection() {
     ]);
 
     try {
-      const res = await fetch('https://future-backend-bf2v.onrender.com', {
+      const res = await fetch('https://future-backend-bf2v.onrender.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
