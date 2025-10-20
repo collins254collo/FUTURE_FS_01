@@ -135,40 +135,42 @@ export default function RootLayout({ children }) {
         />
 
         {/*  Structured Data for Google Knowledge Panel */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Collins Njogu",
-              jobTitle: "Full-Stack Developer",
-              url: "https://collins-wamiatu.vercel.app/",
-              image: "https://collins-wamiatu.vercel.app/portfolio.jpg",
-              description:
-                "Full-stack developer specializing in clean, efficient code and intuitive design.",
-              worksFor: {
-                "@type": "Organization",
-                name: "Colman Tech Savvy",
-              },
-              knowsAbout: [
-                "JavaScript",
-                "React",
-                "Next.js",
-                "Node.js",
-                "TypeScript",
-                "PostgreSQL",
-                "Web Development",
-                "Backend Development",
-              ],
-              sameAs: [
-                "https://github.com/collins254collo",
-                "https://www.linkedin.com/in/collins-njogu-4aa75a351",
-                "https://x.com/CollinsNjo18634",
-              ],
-            }),
-          }}
-        />
+      <script
+       type="application/ld+json"
+         dangerouslySetInnerHTML={{
+             __html: JSON.stringify({
+             "@context": "https://schema.org",
+           "@type": "Person",
+            name: "Collins Njogu",
+         alternateName: "Collins  Njogu",
+           jobTitle: "Full-Stack Developer",
+         url: "https://collins-wamiatu.vercel.app/",
+         image: "https://collins-wamiatu.vercel.app/portfolio.jpg",
+           sameAs: [
+        "https://github.com/collins254collo",
+        "https://www.linkedin.com/in/collins-njogu-4aa75a351",
+        "https://x.com/CollinsNjo18634"
+          ],
+          worksFor: {
+        "@type": "Organization",
+        name: "Colman Tech Savvy"
+      },
+            description:
+        "Full-stack developer specializing in clean code, scalable backend systems, and intuitive UI design.",
+          knowsAbout: [
+            "React",
+            "Next.js",
+            "JavaScript",
+            "Node.js",
+            "TypeScript",
+            "PostgreSQL",
+            "Backend Development",
+            "Frontend Development"
+         ]
+    }),
+  }}
+/>
+
       </head>
       <body className="antialiased">{children}</body>
     </html>
