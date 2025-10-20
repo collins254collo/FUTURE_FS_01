@@ -108,9 +108,7 @@ export default function AboutSection() {
                           height="224"
                         />
                       </div>
-                      <div className="absolute bottom-4 right-4 px-3 py-1 bg-green-400 text-black text-xs font-mono font-bold rounded">
-                        AVAILABLE
-                      </div>
+                    
                     </div>
                   </div>
 
