@@ -15,7 +15,7 @@ export default function AboutSection() {
     if (isTyping && typedText.length < introText.length) {
       const timeout = setTimeout(() => {
         setTypedText(introText.slice(0, typedText.length + 1));
-      }, 100);
+      }, 150);
       return () => clearTimeout(timeout);
     } else if (typedText.length === introText.length) {
       setIsTyping(false);

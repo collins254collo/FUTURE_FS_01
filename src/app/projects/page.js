@@ -63,7 +63,7 @@ export default function TerminalProjects() {
           name: "E-Commerce Platform",
           description: "Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard",
           tech: ["React", "Node.js", "PostgreSql", "Mpesa"],
-          github: "https://github.com/collins254collo/ecommerce",
+          github: "https://github.com/collins254collo/BobbyFurnitureFrontend",
           live: "https://bobbyfurniturekenya.com",
           status: "deployed"
         },
@@ -73,7 +73,7 @@ export default function TerminalProjects() {
         description:
           "Official website for Colman Tech Savvy, showcasing the agency’s web and mobile development services. Built with React.js, Next.js, and Node.js, it features a dynamic design and a contact management system that securely handles client inquiries and messages.",
         tech: ["React.js", "Next.js", "Node.js"],
-        github: "https://github.com/collins254collo/taskapp",
+        github: "https://github.com/collins254collo/colmantechsavvy",
         live: "https://colman-client.vercel.app",
         status: "Deployed"
       }
