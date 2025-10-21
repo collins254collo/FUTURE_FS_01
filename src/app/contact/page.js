@@ -255,17 +255,7 @@ export default function ContactSection() {
                     </div>
                   </nav>
 
-                  <div className="bg-gray-800 p-4 rounded-lg border border-green-400" role="status">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" aria-hidden="true"></div>
-                      <span className="text-green-400 font-mono text-sm font-semibold">
-                        Available for work
-                      </span>
-                    </div>
-                    <p className="text-gray-400 text-xs font-mono">
-                      Currently open to new opportunities and collaborations
-                    </p>
-                  </div>
+                  
                 </aside>
 
                 <section className="lg:col-span-2">
