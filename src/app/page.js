@@ -197,8 +197,8 @@ export default function TerminalIntro() {
                     </div>
 
                     {/* Command Input */}
-                    <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
-                        <TerminalCommandInput currentPage='about'/>
+                     <div className="p-4 sm:p-6 md:p-8 border-t border-gray-700">
+                          <TerminalCommandInput currentPage='home' />
                         </div>
                   </div>
                 )}
