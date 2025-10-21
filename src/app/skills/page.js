@@ -43,7 +43,6 @@ export default function SkillsSection() {
       items: [
         { name: 'MongoDB', category: 'nosql' },
         { name: 'PostgreSQL', category: 'sql' },
-        { name: 'MySQL', category: 'sql' },
         { name: 'Supabase', category: 'baas' },
         { name: 'Prisma', category: 'orm' }
       ]
