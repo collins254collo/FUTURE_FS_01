@@ -63,7 +63,7 @@ export default function TerminalProjects() {
           name: "E-Commerce Platform",
           description: "Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard",
           tech: ["React", "Node.js", "PostgreSql", "Mpesa"],
-          github: "https://github.com/collins254collo/BobbyFurnitureFrontend",
+          github: "https://github.com/collins254collo/bobby",
           live: "https://bobbyfurniturekenya.com",
           status: "deployed"
         },
