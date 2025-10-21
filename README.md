@@ -35,8 +35,5 @@ By combining a **terminal-style UI** with smooth animations and real-time data f
 🔗 **Portfolio:**  https://collins-wamiatu.vercel.app/
 💻 **GitHub Repo:** https://github.com/collins254collo/FUTURE_FS_01
 
-## 🙌 Acknowledgements
-
-Grateful to the **Future Interns** team for the mentorship and guidance that helped bring this project to life.
 
 
