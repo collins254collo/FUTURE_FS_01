@@ -27,10 +27,10 @@ export default function AboutSection() {
       {/* SEO Content - Hidden but crawlable */}
       <div className="sr-only">
         <h1>About Collins Njogu - Full Stack Developer</h1>
-        <h2>Passionate Full Stack Developer from Nairobi, Kenya</h2>
+        <h2>Passionate Full Stack Developer from Eldoret, Kenya</h2>
         <p>
           Collins Njogu is a full stack developer with over 1 year of professional experience 
-          specializing in React, Next.js, Node.js, and modern web technologies. Based in Nairobi, 
+          specializing in React, Next.js, Node.js, and modern web technologies. Based in Eldoret, 
           Kenya, Collins creates elegant solutions to complex problems through clean code and 
           intuitive design.
         </p>
@@ -59,7 +59,7 @@ export default function AboutSection() {
         </p>
         <h3>Contact Information</h3>
         <p>Email: njogucollins10397@gmail.com</p>
-        <p>Location: Nairobi, Kenya</p>
+        <p>Location: Eldoret, Kenya</p>
         <p>Experience: 1+ Years Professional Experience</p>
         <p>Status: Currently available for new opportunities</p>
       </div>
@@ -102,7 +102,7 @@ export default function AboutSection() {
                       <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-lg border-2 border-green-400 overflow-hidden bg-gray-800">
                         <img 
                           src="/portfolio.jpg" 
-                          alt="Collins Njogu, Full Stack Developer from Nairobi, Kenya specializing in React, Next.js and Node.js" 
+                          alt="Collins Njogu, Full Stack Developer from Eldoret, Kenya specializing in React, Next.js and Node.js" 
                           className="w-full h-full object-cover"
                           width="224"
                           height="224"
@@ -119,7 +119,7 @@ export default function AboutSection() {
                         <MapPin className="w-4 h-4 text-green-400 flex-shrink-0" />
                         <div>
                           <div className="text-gray-500 font-mono">Location</div>
-                          <div className="text-gray-300">Nairobi, Kenya</div>
+                          <div className="text-gray-300">Eldoret, Kenya</div>
                         </div>
                       </div>
                     </div>
