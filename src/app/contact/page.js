@@ -29,7 +29,7 @@ export default function ContactSection() {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Nairobi, Kenya',
+      value: 'Eldoret, Kenya',
       link: null
     }
   ];
@@ -120,7 +120,7 @@ export default function ContactSection() {
         <h1>Contact Collins Njogu - Full Stack Developer</h1>
         <h2>Get in Touch for Freelance Projects and Collaborations</h2>
         <p>
-          Contact Collins Njogu, a full stack developer based in Nairobi, Kenya. 
+          Contact Collins Njogu, a full stack developer based in Eldoret, Kenya. 
           Available for freelance projects, full-time opportunities, and collaborations. 
           Specializing in React, Next.js, Node.js, and modern web development.
         </p>
@@ -129,7 +129,7 @@ export default function ContactSection() {
         <address>
           <p>Email: njogucollins10397@gmail.com</p>
           <p>Phone: +254 745 733370</p>
-          <p>Location: Nairobi, Kenya</p>
+          <p>Location: Eldoret, Kenya</p>
         </address>
         
         <h3>Availability</h3>
